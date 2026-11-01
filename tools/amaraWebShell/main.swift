@@ -795,6 +795,7 @@ private final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelega
 
     private func configureWebView(server: LoopbackServer) {
         let configuration = WKWebViewConfiguration()
+        configuration.preferences.isElementFullscreenEnabled = true
         configuration.websiteDataStore = .default()
         configuration.mediaTypesRequiringUserActionForPlayback = [.audio]
         let view = WKWebView(frame: .zero, configuration: configuration)
