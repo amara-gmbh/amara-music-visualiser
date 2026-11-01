@@ -17,6 +17,17 @@ colour, abstract forms, landscapes, city lights and fractals. Choose a scene and
 look, or let a journey move between them. Adjust colours and pace, save favourite
 visual settings in your browser, and show or hide the controls and equaliser.
 
+![The amara music visualiser Mac app showing the Liquid Stained Glass world and its controls](docs/screenshots/liquid-stained-glass.jpg)
+
+## Explore visual worlds
+
+Move from flowing colour and abstract shapes to detailed fractals. Pick a world
+and variation yourself, or let a journey choose for you.
+
+![The amara music visualiser showing the Mandelbrot world](docs/screenshots/mandelbrot.jpg)
+
+*Both screenshots show the Mac app without an audio input.*
+
 ## Listen your way
 
 - **Music files:** choose a local audio file.
