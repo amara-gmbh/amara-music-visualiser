@@ -6,7 +6,7 @@
 
 **Turn music into moving worlds.**
 
-[Mac preview download](https://github.com/amara-gmbh/amara-music-visualiser/releases/tag/v0.1.0-mac-preview.1) · [Try the web version](https://musicvisualiser.amarawebdesign.de/) · [amara GmbH](https://amara.gmbh) · [Browser guide](web/README.md) · [Licence](LICENSE) · [Third-party notices](THIRD-PARTY-NOTICES.md)
+[Mac preview download](https://github.com/amara-gmbh/amara-music-visualiser/releases/tag/v0.1.0-mac-preview.2) · [Try the web version](https://musicvisualiser.amarawebdesign.de/) · [amara GmbH](https://amara.gmbh) · [Browser guide](web/README.md) · [Licence](LICENSE) · [Third-party notices](THIRD-PARTY-NOTICES.md)
 
 </div>
 
@@ -73,7 +73,7 @@ are not automatically imported; export them from the older build before upgradin
 The app bundles a local server and audio helper. macOS may request recording
 permission; the legacy system-audio fallback uses screen-capture authorization.
 Local builds are ad-hoc signed by default and are not notarized;
-rebuilding may require permission to be granted again. An [unsigned Mac preview](https://github.com/amara-gmbh/amara-music-visualiser/releases/tag/v0.1.0-mac-preview.1)
+rebuilding may require permission to be granted again. An [unsigned Mac preview](https://github.com/amara-gmbh/amara-music-visualiser/releases/tag/v0.1.0-mac-preview.2)
 is available. It is not Apple Developer ID signed or notarized; macOS Gatekeeper
 may block it on first launch.
 
