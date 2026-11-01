@@ -28,6 +28,8 @@ and variation yourself, or let a journey choose for you.
 
 ![Flowing abstract colours in amara music visualiser](docs/screenshots/flowing-colour.png)
 
+![A colourful particle orbit in amara music visualiser](docs/screenshots/particle-orbit.png)
+
 ## Listen your way
 
 - **Music files:** choose a local audio file.
