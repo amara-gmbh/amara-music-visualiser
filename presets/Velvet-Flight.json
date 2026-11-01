@@ -1,0 +1,23 @@
+{
+  "format_version": 1,
+  "name": "Velvet Flight",
+  "visual": {
+    "scene": 0,
+    "intensity": 0.65,
+    "motion": 0.56,
+    "complexity": 0.82,
+    "hue": 0.72,
+    "glow": 0.72,
+    "warp": 0.42,
+    "feedback": 0.65
+  },
+  "mappings": {
+    "bass_to_pulse": 0.72,
+    "mids_to_geometry": 0.6,
+    "treble_to_sparkle": 0.58,
+    "beat_to_flash": 0.42
+  },
+  "audio_mode": "Demo",
+  "director_enabled": false,
+  "director_freedom": 0.28
+}

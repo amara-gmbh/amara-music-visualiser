@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>en</string>
+  <key>CFBundleDisplayName</key>
+  <string>amaraMusicVisualiser</string>
+  <key>CFBundleExecutable</key>
+  <string>amaraMusicVisualiser</string>
+  <key>CFBundleIdentifier</key>
+  <string>com.amara.musicvisualiser</string>
+  <key>CFBundleInfoDictionaryVersion</key>
+  <string>6.0</string>
+  <key>CFBundleIconFile</key>
+  <string>AppIcon</string>
+  <key>CFBundleName</key>
+  <string>amaraMusicVisualiser</string>
+  <key>CFBundlePackageType</key>
+  <string>APPL</string>
+  <key>CFBundleShortVersionString</key>
+    <string>0.6.25</string>
+  <key>CFBundleVersion</key>
+    <string>32</string>
+  <key>LSMinimumSystemVersion</key>
+  <string>13.0</string>
+  <key>LSApplicationCategoryType</key>
+  <string>public.app-category.music</string>
+  <key>NSHighResolutionCapable</key>
+  <true/>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>amaraMusicVisualiser can listen to a microphone when you choose Microphone mode.</string>
+  <key>NSScreenCaptureUsageDescription</key>
+  <string>amaraMusicVisualiser uses ScreenCaptureKit audio capture to react to the sound playing on this Mac. No video is stored.</string>
+  <key>NSAudioCaptureUsageDescription</key>
+  <string>amaraMusicVisualiser listens to the sound playing on this Mac to animate your visuals. Audio stays in memory and is never recorded or uploaded.</string>
+</dict>
+</plist>

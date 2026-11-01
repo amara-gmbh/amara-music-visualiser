@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import { createLookJourney } from '../choreography.js';
+import { createVariationMode } from '../variation-mode.js';
+
+const mode = createVariationMode();
+const lane = createLookJourney(Array(17).fill(0));
+const state = (now, extra = {}) => ({ selection: '7', current: 7, next: null,
+  worldStart: 0, look: lane.state(7, now), now, ...extra });
+assert.equal(mode.isAutomatic(), true, 'manual worlds offer Auto variations by default');
+mode.worldChanged(10);
+assert.equal(mode.shouldAdvance(state(34)), false, 'a newly selected world has time to settle');
+assert.equal(mode.shouldAdvance(state(34.1)), true, 'the held world can change variation');
+assert.equal(mode.shouldAdvance(state(35, { current: 3 })), false, 'never change the outgoing world');
+assert.equal(mode.shouldAdvance(state(35, { next: 4 })), false, 'avoid changing looks during a world melt');
+lane.request(7, 3, 34.1);
+assert.equal(mode.shouldAdvance(state(50)), false, 'do not rapidly change the new look');
+assert.equal(mode.shouldAdvance(state(58.2)), true);
+mode.choose('4', 59);
+assert.equal(mode.isAutomatic(), false);
+assert.equal(mode.shouldAdvance(state(300)), false, 'a selected look stays fixed');
+assert.equal(mode.shouldAdvance(state(300, { selection: 'auto' })), true, 'overall Auto remains independent');
+mode.choose('auto', 301);
+assert.equal(mode.shouldAdvance(state(325)), false, 're-enabling Auto starts a fresh hold');
+assert.equal(mode.shouldAdvance(state(326)), true);
+assert.equal(mode.allowsMandelbrotRegion('10'), true, 'held Mandelbrot may change regions at a safe boundary');
+mode.choose('2', 400);
+assert.equal(mode.allowsMandelbrotRegion('10'), false, 'a manually held region stays selected');
+assert.equal(mode.allowsMandelbrotRegion('auto'), true);
+assert.equal(mode.allowsMandelbrotRegion('9'), false);
+console.log('Independent manual-world Auto variations passed');

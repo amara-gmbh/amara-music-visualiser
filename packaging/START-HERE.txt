@@ -1,0 +1,8 @@
+amaraMusicVisualiser
+
+This local macOS build runs the visualiser on your device.
+Start the app and choose a local audio file, a microphone, or a supported system-audio source.
+macOS may ask for microphone or system-audio recording permission.
+
+For source setup, optional font details and licensing, see the repository README.md.
+For public binary distribution, sign and notarize with your own Developer ID and verify on a clean Mac.

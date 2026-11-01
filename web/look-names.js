@@ -1,0 +1,20 @@
+// Matches the names in src/visual.rs; the renderer selects the same indices.
+export const LOOK_NAMES = [
+  'Harmonic Vaults|Braided Currents|Trefoil Gardens|Helical Ribs|Folded Canyon|Cathedral Lace|Orbital Petals|Gravity Wells|Crystal Wings|Double Helix',
+  'Original|Cathedral Lace|Pearl Cells|Tidal Ribbons|Dragon Veins|Obsidian Petals|Helix Garden|Crystal Estuary|Woven Nebula|Ember Labyrinth',
+  'Pearl Currents|Folded Membrane|Vortex Pool|Moire Laminae|Splitting Droplets|Shell Fold|Braided Currents|Cellular Glass|Prismatic Fan|Ripple Tessellation',
+  'Liquid Engraving|Chladni Resonance|Spiral Seeds|Orbital Interference|Hyperbolic Weave|Logarithmic Shells|Gyroid Dream|Cellular Rifts|Diffraction Garden|Hexagonal Harmonics',
+  'Luminous Sphere|Breathing Shells|Trefoil Orbit|Cinquefoil Ribbon|Lissajous Lattice|Harmonic Ribbon|Curl Swarm|Twin Vortices|Spiral Observatory|Crystal Lanterns',
+  'Living Attractor|Lorenz Wings|Rossler Scroll|Thomas Labyrinth|Wing to Scroll|Labyrinth Wings|Scroll Garden|Braided Chaos|Unfurling Wings|Labyrinth Scroll',
+  'Frequency Highlands|Bent Ridges|Copper Valley|Rolling Spectrum|Sound Dunes|Wide Basin|Spectral Shelf|Frequency Canyon|Harmonic Mesa|Living Soundscape',
+  'Crystal Columns|Velvet Steps|Spectrum Arcade|Twin Terraces|Glass Organ|Frequency Orchard|Harmonic Fold|Aurora Pillars|Bass Cathedral|Prism Skyline',
+  'Listening Pool|Twin Springs|Silk Canal|Rain Glass|Tidal Silk|Prism Lagoon|Cross Current|Mercury Pool|Longshore|Crystal Rain',
+  'Emerald Veil|Boreal Ribbons|Violet Crown|Polar Cascade|Twin Horizons|Solar Silk|Glacial Wings|Amber Storm|Midnight Spiral|Prismatic Dawn',
+  'Seahorse Valley|Cardioid Voyage|Elephant Valley|Triple Spiral|Satellite Garden|Dendrite Disco|Needle Galaxy|Coral Cathedral|Sapphire Filaments|Satellite Spiral',
+  'Prismatic Passage|Honey Current|Molten Petals|Ribbon Prism|Deep Mosaic|Copper Lagoon|Crystal Channels|Velvet Lenses|Broken Spectrum|Opal Drift',
+  'Helix Current|Braided Passage|Turning Sails|Silk Canyon|Petal Vault|Twin Currents|Folded Canopy|Infinity Weave|Opening Bloom|Spiral Loom',
+  'Afterglow River|Velvet Infinity|Split Current|Electric Weave|Magnetic Script|Neon Cadence|Helix Parade|Spectral Delta|Fresnel Garden|Prismatic Fugue',
+  'Sunset Boulevard|Ocean Drive|Palm Causeway|Midnight Marina|Art Deco Rush|Violet Skyline|Lagoon Flight|Chrome Rain|Golden Keys|Neon Afterhours',
+  'Crema Current|Espresso Ribbons|Vanilla Drift|Copper Creases|Crema Canopy|Mocha Marble|Silk Espresso|Roasted Whorls|Pearl Weave|Honeyed Passage',
+  'Chromatic Wash|Rose Tides|Lagoon Petals|Neon Ink|Sunset Silk|Floating Gardens|Disco Marbling|Misty Irises|Electric Saffron|Prismatic Rain',
+].map(row => row.split('|'));

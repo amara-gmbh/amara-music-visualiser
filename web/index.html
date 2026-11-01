@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#211a1a">
+  <title>amaraMusicVisualiser</title>
+  <link rel="stylesheet" href="./style.css?v=20261031.19">
+</head>
+<body>
+  <main class="stage">
+    <canvas id="visual" aria-label="Music visualisation"></canvas>
+
+    <header class="brand" aria-label="amaraMusicVisualiser">
+      <img src="./assets/amara-logo.svg?v=20261031.19" alt="amara">
+      <span class="brand-quiet">MusicVisualiser</span>
+    </header>
+
+    <nav class="panel-switches" aria-label="Panel visibility">
+      <button id="toggle-controls" type="button" aria-controls="controls" aria-expanded="true">Hide controls</button>
+      <button id="toggle-equaliser" type="button" aria-controls="equaliser" aria-expanded="true">Hide equaliser</button>
+    </nav>
+
+    <aside id="controls" class="controls" aria-label="Visualiser controls">
+      <div class="panel-heading">
+        <div>
+          <span class="eyebrow">YOUR MUSIC, VISIBLE</span>
+          <h1>Make it move.</h1>
+        </div>
+        <button id="fullscreen" class="icon-button" type="button" aria-label="Toggle full screen" title="Full screen">⛶</button>
+      </div>
+      <p class="intro">Choose a track or connect live audio.</p>
+
+      <div class="control-group">
+        <label for="music-file">MUSIC</label>
+        <div class="music-actions">
+          <input id="music-file" type="file" accept="audio/*" aria-label="Choose a music file">
+          <label for="music-file" class="file-button">Choose a track</label>
+        </div>
+        <div id="file-player" class="file-player" aria-label="Track controls" hidden>
+          <div class="file-player-actions">
+            <button id="play" class="play-button" type="button">Play</button>
+            <button id="stop-file" type="button">Stop</button>
+            <button id="rewind-file" type="button" aria-label="Rewind 10 seconds">−10s</button>
+            <button id="forward-file" type="button" aria-label="Forward 10 seconds">+10s</button>
+          </div>
+          <div class="file-timeline">
+            <span id="file-elapsed">0:00</span>
+            <input id="file-seek" type="range" min="0" max="0" value="0" step="0.1" aria-label="Track position" disabled>
+            <span id="file-duration">--:--</span>
+          </div>
+        </div>
+        <div class="capture-actions">
+          <button id="system-audio" type="button">Listen to computer audio</button>
+          <button id="microphone" type="button">Microphone</button>
+          <button id="share-audio" type="button">Share audio</button>
+          <button id="stop-capture" type="button" disabled>Stop listening</button>
+        </div>
+        <p id="system-audio-status" class="capture-note" role="status" hidden></p>
+        <p id="music-insight" class="capture-note" role="status" aria-live="polite">Music insight · waiting for a clear signal</p>
+        <p class="capture-note">Sharing opens your browser’s screen or tab picker. Select a source with audio and enable its audio option.</p>
+      </div>
+
+      <div class="control-group world-group">
+        <label for="journey">JOURNEY</label>
+        <select id="journey" aria-label="Curated journey">
+          <option value="Surprise" selected>Surprise Me</option>
+          <option value="Dreamy">Dreamy</option>
+          <option value="NightDrive">Night Drive</option>
+          <option value="DeepFocus">Deep Focus</option>
+          <option value="Dancefloor">Dancefloor</option>
+          <option value="Aquarelle">Aquarelle</option>
+          <option value="Manual">Manual · journey paused</option>
+        </select>
+        <p id="journey-status" class="capture-note" role="status" aria-live="polite">Surprise Me · all worlds</p>
+        <label for="world">WORLD</label>
+        <select id="world" aria-label="Visual world"></select>
+        <label for="variation" class="variation-label">VARIATION</label>
+        <select id="variation" aria-label="Visual variation" disabled><option>Auto chooses variations</option></select>
+        <p id="scene-state" class="scene-state" aria-live="off"></p>
+        <progress id="scene-progress" max="1" value="0" aria-label="Time until next world"></progress>
+      </div>
+      <details class="settings">
+        <summary>Visual settings</summary>
+        <label for="palette">Palette</label>
+        <select id="palette" aria-label="Visual palette">
+          <option value="Cosmic">Cosmic</option>
+          <option value="MoccaVanilla">Mocca &amp; Vanilla</option>
+          <option value="Aquarelle">Aquarelle</option>
+        </select>
+        <label for="graphics-quality">Graphics</label>
+        <select id="graphics-quality" aria-label="Graphics quality">
+          <option value="Auto">Automatic</option>
+          <option value="Low">Efficient</option>
+          <option value="Balanced" selected>Balanced</option>
+          <option value="High">High Detail</option>
+        </select>
+        <p id="graphics-status" class="capture-note" role="status" aria-live="polite">Manual · Balanced</p>
+        <label>Pace <input id="pace" type="range" min="0.05" max="1.8" step="any" value="1"></label>
+        <label>Intensity <input id="intensity" type="range" min="0.15" max="1.6" step="any" value="0.85"></label>
+        <label>Detail <input id="detail" type="range" min="0.15" max="1.5" step="any" value="0.8"></label>
+        <label>Bass <input id="bass-gain" type="range" min="0" max="1.5" step="any" value="1.4"></label>
+        <label>Mids <input id="mids-gain" type="range" min="0" max="1.5" step="any" value="1.4"></label>
+        <label>Highs <input id="highs-gain" type="range" min="0" max="1.5" step="any" value="1.4"></label>
+      </details>
+      <details class="settings">
+        <summary>Profiles</summary>
+        <p class="capture-note">Profiles save the current world and settings. Some advanced Mac-only fields are preserved for export but not applied here. Audio access never starts from a profile.</p>
+        <label for="profile-name">Profile name</label>
+        <input id="profile-name" type="text" maxlength="80" placeholder="My profile">
+        <div class="profile-actions"><button id="profile-save" type="button">Save</button><button id="profile-export" type="button">Export</button></div>
+        <select id="profile-list" aria-label="Saved profile"><option value="">Choose saved profile</option></select>
+        <div class="profile-actions"><button id="profile-load" type="button">Load</button><button id="profile-delete" type="button">Delete</button><label class="file-button" for="profile-import">Import</label><input id="profile-import" type="file" accept="application/json,.json" aria-label="Import profile"></div>
+        <div id="profile-delete-confirm" class="profile-confirm" hidden>
+          <p id="profile-delete-question"></p>
+          <div class="profile-actions"><button id="profile-delete-confirm-button" type="button">Delete profile</button><button id="profile-delete-cancel" type="button">Cancel</button></div>
+        </div>
+      </details>
+      <details class="settings">
+        <summary>Favorites &amp; visual recipes</summary>
+        <p class="capture-note">Favorites stay in this browser. Recipes contain visual settings only; applying one never starts or changes audio.</p>
+        <label for="favorite-name">Favorite name</label>
+        <input id="favorite-name" type="text" maxlength="80" placeholder="My favorite">
+        <div class="profile-actions"><button id="favorite-save" type="button">Favorite current</button></div>
+        <select id="favorite-list" aria-label="Saved favorite"><option value="">Choose favorite</option></select>
+        <div class="profile-actions"><button id="favorite-load" type="button">Load</button><button id="favorite-remove" type="button">Remove</button></div>
+        <div class="profile-actions"><button id="recipe-copy-link" type="button">Copy recipe link</button><button id="recipe-copy-text" type="button">Copy recipe text</button></div>
+        <label for="recipe-import">Recipe link or text</label>
+        <textarea id="recipe-import" rows="3" maxlength="12288" spellcheck="false" placeholder="Paste a visual recipe here"></textarea>
+        <div class="profile-actions"><button id="recipe-apply" type="button">Review &amp; apply</button></div>
+        <p id="recipe-status" class="capture-note" role="status" aria-live="polite">Ready · recipes never include audio. Localhost links open only where amaraMusicVisualiser is running.</p>
+      </details>
+      <p id="status" class="status" role="status" aria-live="polite">Preparing your visualiser…</p>
+      <p class="privacy-note">Your music stays on this device.</p>
+    </aside>
+    <aside id="equaliser" class="equaliser panel" aria-label="Music equaliser">
+      <div id="spectrum" class="spectrum" aria-hidden="true"></div>
+    </aside>
+  </main>
+  <script type="module" src="./main.js?v=20261031.19"></script>
+</body>
+</html>

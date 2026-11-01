@@ -1,0 +1,23 @@
+{
+  "format_version": 1,
+  "name": "Liquid Light",
+  "visual": {
+    "scene": 1,
+    "intensity": 0.72,
+    "motion": 0.62,
+    "complexity": 0.95,
+    "hue": 0.78,
+    "glow": 0.82,
+    "warp": 1.12,
+    "feedback": 0.86
+  },
+  "mappings": {
+    "bass_to_pulse": 0.8,
+    "mids_to_geometry": 1.05,
+    "treble_to_sparkle": 0.62,
+    "beat_to_flash": 0.55
+  },
+  "audio_mode": "Demo",
+  "director_enabled": false,
+  "director_freedom": 0.35
+}

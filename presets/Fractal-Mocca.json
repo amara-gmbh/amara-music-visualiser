@@ -1,0 +1,24 @@
+{
+  "format_version": 1,
+  "name": "Fractal Mocca",
+  "visual": {
+    "scene": 1,
+    "intensity": 0.85,
+    "motion": 1.1,
+    "complexity": 1.35,
+    "hue": 0.72,
+    "glow": 0.8,
+    "warp": 1.0,
+    "feedback": 0.55,
+    "palette": "MoccaVanilla"
+  },
+  "mappings": {
+    "bass_to_pulse": 1.0,
+    "mids_to_geometry": 0.72,
+    "treble_to_sparkle": 0.9,
+    "beat_to_flash": 0.8
+  },
+  "audio_mode": "System",
+  "director_enabled": false,
+  "director_freedom": 0.35
+}

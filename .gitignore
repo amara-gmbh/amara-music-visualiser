@@ -1,0 +1,42 @@
+# Generated builds, local working material, and release artifacts.
+/target
+/work
+/outputs
+
+# Local environment and credentials; example configuration remains publishable.
+.env
+.env.*
+!.env.example
+.secrets/
+secrets/
+.credentials/
+credentials/
+*.key
+*.pem
+*.p8
+*.p12
+*.pfx
+*.der
+*.cer
+*.crt
+*.mobileprovision
+*.provisionprofile
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
+# Local diagnostics and macOS metadata.
+*.log
+/logs/
+/.logs/
+.DS_Store
+._*
+.AppleDouble/
+
+# Optional third-party font: fetched locally, never added to this repository.
+/assets/fonts/JetBrainsMonoNerdFont-Regular.ttf
+
+# Python local caches.
+__pycache__/
+*.py[cod]

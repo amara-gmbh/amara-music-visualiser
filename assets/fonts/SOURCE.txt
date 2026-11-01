@@ -1,0 +1,9 @@
+Optional asset: JetBrainsMono Nerd Font Regular. This binary is not distributed in this repository.
+
+Pinned upstream Git blob: fb7c2ab39f128f52269e26cf3eaaa11082ceec8d
+SHA-256: 1c680e8cde9fcf8b88a5605ce8d1fb94dd3fb15841f7ca7bf4c55664855e5611
+Upstream: https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/JetBrainsMono/Ligatures/JetBrainsMonoNerdFont-Regular.ttf
+Font and icon source/licence inventory: https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/JetBrainsMono/README.md
+Nerd Fonts licence audit: https://github.com/ryanoasis/nerd-fonts/blob/master/license-audit.md
+
+The base JetBrains Mono font is covered by the included OFL.txt. The patched font includes icon sets under multiple licences; one upstream icon-set entry is unlicensed. This file does not grant rights to the patched binary or its embedded icon sets. Review applicable permissions before fetching, using or redistributing the asset.

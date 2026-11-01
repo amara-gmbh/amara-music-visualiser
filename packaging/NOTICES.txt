@@ -1,0 +1,8 @@
+amara music visualiser — distribution notices
+
+The accompanying LICENSE.txt contains the MIT licence for the project-owned
+source code. The amara name and logos are not licensed under that licence.
+
+This macOS web-app build uses the macOS-provided WebKit, AppKit and other
+system frameworks. It does not bundle the separate native Rust application or
+its optional patched font.
