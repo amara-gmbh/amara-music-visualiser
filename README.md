@@ -30,6 +30,8 @@ and variation yourself, or let a journey choose for you.
 
 ![A colourful particle orbit in amara music visualiser](docs/screenshots/particle-orbit.png)
 
+![A spectral landscape in amara music visualiser](docs/screenshots/spectral-landscape.png)
+
 ## Listen your way
 
 - **Music files:** choose a local audio file.
