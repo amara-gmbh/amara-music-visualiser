@@ -111,6 +111,12 @@ zsh scripts/check.sh
 GPU and live-audio checks also require suitable hardware and permissions.
 Browser and bridge test instructions are in the [browser guide](web/README.md).
 
+## Contributing
+
+We welcome contributions to the amara music visualiser, including new visual worlds, effects and features, as well as performance, accessibility, documentation and bug fixes. Open an [issue](https://github.com/amara-gmbh/amara-music-visualiser/issues) to discuss an idea or report a problem, or submit a [pull request](https://github.com/amara-gmbh/amara-music-visualiser/pulls) with your changes.
+
+Please avoid sharing private files or credentials and check the licence and attribution requirements for any third-party assets. The original source code is offered under the MIT licence.
+
 ## Licence
 
 The original source code is offered under the [MIT licence](LICENSE).
