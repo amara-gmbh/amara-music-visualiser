@@ -1,5 +1,6 @@
 import AppKit
 import Foundation
+import Security
 import WebKit
 import Darwin
 
@@ -276,6 +277,7 @@ private final class ConnectionRegistry: @unchecked Sendable {
 
 private final class LoopbackServer: @unchecked Sendable {
     private let stableOrigin: StableOrigin
+    let sessionToken: String
     private let runtimeRoot: URL
     private let webRoot: URL
     private let shaderRoot: URL
@@ -294,6 +296,12 @@ private final class LoopbackServer: @unchecked Sendable {
     var startURL: URL { URL(string: "\(origin)/web/")! }
 
     init(bundle: Bundle = .main) throws {
+        var tokenBytes = [UInt8](repeating: 0, count: 32)
+        let randomStatus = tokenBytes.withUnsafeMutableBytes { bytes in
+            SecRandomCopyBytes(kSecRandomDefault, bytes.count, bytes.baseAddress!)
+        }
+        guard randomStatus == errSecSuccess else { throw ShellError.socket("Could not create the local audio session credential.") }
+        sessionToken = tokenBytes.map { String(format: "%02x", $0) }.joined()
         let support = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         stableOrigin = try StableOrigin(directory: support.appendingPathComponent("com.amara.musicvisualiser.web", isDirectory: true))
         guard let resources = bundle.resourceURL else {
@@ -514,6 +522,7 @@ private final class LoopbackServer: @unchecked Sendable {
     private func serveAPI(_ request: HTTPRequest, to descriptor: Int32) {
         let authorised = request.headers["host"] == authority
             && request.headers["origin"] == origin
+            && request.headers["x-amara-audio-token"] == sessionToken
             && request.headers["content-length"] == "0"
             && request.headers["transfer-encoding"] == nil
         guard authorised else {
@@ -795,6 +804,35 @@ private final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelega
 
     private func configureWebView(server: LoopbackServer) {
         let configuration = WKWebViewConfiguration()
+        // The secret stays in a document-start closure; it is never added to
+        // static assets or requests to other origins.
+        let audioAuthorization = """
+        (() => {
+          if (location.origin !== "\(server.origin)") return;
+          const credential = "\(server.sessionToken)";
+          const originalFetch = window.fetch.bind(window);
+          const paths = new Set([
+            "/api/system-audio/status", "/api/system-audio/stop", "/api/system-audio/stream",
+            "/api/mac-audio/status", "/api/mac-audio/stop", "/api/mac-audio/stream"
+          ]);
+          const wrappedFetch = (input, init) => {
+            let url;
+            try { url = new URL(typeof input === "string" || input instanceof URL ? input : input.url, location.href); }
+            catch { return originalFetch(input, init); }
+            if (url.origin !== location.origin || !paths.has(url.pathname)) return originalFetch(input, init);
+            const options = { ...init };
+            const inheritedHeaders = init?.headers ?? (input instanceof Request ? input.headers : undefined);
+            const headers = new Headers(inheritedHeaders);
+            headers.set("X-Amara-Audio-Token", credential);
+            options.headers = headers;
+            return originalFetch(input, options);
+          };
+          Object.defineProperty(window, "fetch", { value: wrappedFetch, writable: false, configurable: false });
+        })();
+        """
+        configuration.userContentController.addUserScript(WKUserScript(
+            source: audioAuthorization, injectionTime: .atDocumentStart, forMainFrameOnly: true
+        ))
         configuration.preferences.isElementFullscreenEnabled = true
         configuration.websiteDataStore = .default()
         configuration.mediaTypesRequiringUserActionForPlayback = [.audio]

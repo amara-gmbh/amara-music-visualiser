@@ -40,4 +40,5 @@ jobs:
         with:
           persist-credentials: false
       - run: zsh -n scripts/build-web-macos.sh
+      - run: PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tools/amaraWebShell/tests -p '*_test.py'
       - run: zsh scripts/build-web-macos.sh

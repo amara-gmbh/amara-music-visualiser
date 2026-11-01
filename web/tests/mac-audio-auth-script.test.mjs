@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const source=fs.readFileSync(new URL('../../tools/amaraWebShell/main.swift', import.meta.url),'utf8');
+let script=source.split('let audioAuthorization = """')[1].split('"""')[0];
+const origin='http://127.0.0.1:49123', token='a'.repeat(64);
+script=script.replaceAll('\\(server.origin)',origin).replaceAll('\\(server.sessionToken)',token);
+const calls=[];const fake={fetch:async (input,init)=>{calls.push({input,init});return {ok:true}}};
+const context={window:fake, location:{origin,href:origin+'/web/'},URL,Request,Headers,Set};vm.runInNewContext(script,context);
+await fake.fetch('/api/system-audio/stream',{method:'POST',body:''});assert.equal(calls.at(-1).init.headers.get('X-Amara-Audio-Token'),token);
+await fake.fetch('/api/mac-audio/status',{method:'POST',body:''});assert.equal(calls.at(-1).init.headers.get('X-Amara-Audio-Token'),token);
+await fake.fetch('https://example.test/api/system-audio/stream',{method:'POST'});assert.equal(calls.at(-1).init.headers,undefined);
+await fake.fetch('/web/main.js');assert.equal(calls.at(-1).init,undefined);
+assert.ok(!fake.fetch.toString().includes(token));console.log('PASS injected token restricted to local audio API and not exposed in wrapper source');

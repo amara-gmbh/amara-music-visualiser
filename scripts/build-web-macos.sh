@@ -125,7 +125,7 @@ mkdir -p "$CONTENTS/MacOS" "$CONTENTS/Helpers" "$RUNTIME/web/assets" \
   -target arm64-apple-macosx13.0 \
   -module-cache-path "$STAGING/swift-module-cache" \
   "$SHELL_SOURCE" "$ORIGIN_SOURCE" -O \
-  -framework AppKit -framework WebKit -framework Network -framework Foundation \
+  -framework AppKit -framework WebKit -framework Network -framework Foundation -framework Security \
   -o "$CONTENTS/MacOS/$EXECUTABLE_NAME"
 
 # Embed a helper-specific plist so both the binary metadata and its signature
