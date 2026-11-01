@@ -24,16 +24,6 @@ visual settings in your browser, and show or hide the controls and equaliser.
 Move from flowing colour and abstract shapes to detailed fractals. Pick a world
 and variation yourself, or let a journey choose for you.
 
-![The amara music visualiser showing the Mandelbrot world](docs/screenshots/mandelbrot.jpg)
-
-<img width="1361" height="1155" alt="clipboard" src="https://github.com/user-attachments/assets/7f96552b-43c8-4f53-8332-cbd08ed220a4" />
-
-<img width="1361" height="1155" alt="clipboard" src="https://github.com/user-attachments/assets/4e260ff3-dfb2-42a6-a039-71d96c55d1b3" />
-
-
-
-*Both screenshots show the Mac app without an audio input.*
-
 ## Listen your way
 
 - **Music files:** choose a local audio file.
