@@ -24,6 +24,10 @@ visual settings in your browser, and show or hide the controls and equaliser.
 Move from flowing colour and abstract shapes to detailed fractals. Pick a world
 and variation yourself, or let a journey choose for you.
 
+![A luminous tunnel of colour in amara music visualiser](docs/screenshots/light-tunnel.png)
+
+![Flowing abstract colours in amara music visualiser](docs/screenshots/flowing-colour.png)
+
 ## Listen your way
 
 - **Music files:** choose a local audio file.
