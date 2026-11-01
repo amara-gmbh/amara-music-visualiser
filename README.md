@@ -32,6 +32,8 @@ and variation yourself, or let a journey choose for you.
 
 ![A spectral landscape in amara music visualiser](docs/screenshots/spectral-landscape.png)
 
+![Mocca and cream waves in amara music visualiser](docs/screenshots/mocca-cream.png)
+
 ## Listen your way
 
 - **Music files:** choose a local audio file.
